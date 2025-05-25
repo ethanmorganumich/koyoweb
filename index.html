@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Koyo Web</title>
+  <style>
+    /* Sleek, simple styling */
+    body { font-family: Arial, sans-serif; margin:0; padding:0; color: #333; }
+    header { background: #f5f5f5; padding: 20px; text-align: center; }
+    nav { margin-top: 10px; }
+    nav button { margin: 0 5px; padding: 8px 12px; border: none; background: #ddd; cursor: pointer; border-radius: 4px; }
+    nav button.active { background: #333; color: #fff; }
+    main { padding: 40px; }
+    section { margin-bottom: 60px; }
+    h1, h2 { margin-bottom: 10px; }
+    footer { background: #f5f5f5; padding: 20px; text-align: center; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 data-lang="en">Welcome to the Website for Koyo Trading Co</h1>
+    <h1 data-lang="ja" style="display:none;">ようこそ</h1>
+    <h1 data-lang="zh" style="display:none;">欢迎</h1>
+    <nav>
+      <button class="lang-btn active" data-lang="en">English</button>
+      <button class="lang-btn" data-lang="ja">日本語</button>
+      <button class="lang-btn" data-lang="zh">中文</button>
+    </nav>
+  </header>
+  <main>
+    <section id="about">
+      <h2 data-lang="en">About</h2>
+      <p data-lang="en">This is a sleek and simple website for a Japanese businessman conducting business in the USA, China, and Japan.</p>
+      <h2 data-lang="ja" style="display:none;">会社概要</h2>
+      <p data-lang="ja" style="display:none;">これは、米国、中国、日本でビジネスを行う日本のビジネスマン向けのシンプルで洗練されたウェブサイトです。</p>
+      <h2 data-lang="zh" style="display:none;">关于</h2>
+      <p data-lang="zh" style="display:none;">这是一个面向在美国、中国和日本开展业务的日本商人的简洁时尚网站。</p>
+    </section>
+    <section id="contact">
+      <h2 data-lang="en">Contact</h2>
+      <p data-lang="en">Email: business@example.com<br>Phone: +81-123-456-7890</p>
+      <h2 data-lang="ja" style="display:none;">お問い合わせ</h2>
+      <p data-lang="ja" style="display:none;">メール：business@example.com<br>電話：+81-123-456-7890</p>
+      <h2 data-lang="zh" style="display:none;">联系方式</h2>
+      <p data-lang="zh" style="display:none;">电子邮件：business@example.com<br>电话：+81-123-456-7890</p>
+    </section>
+  </main>
+  <footer>
+    <p data-lang="en">&copy; 2025 Koyo Web</p>
+    <p data-lang="ja" style="display:none;">&copy; 2025 コヨウェブ</p>
+    <p data-lang="zh" style="display:none;">&copy; 2025 Koyo 网站</p>
+  </footer>
+  <script>
+    const buttons = document.querySelectorAll('nav button.lang-btn');
+    const contentEls = document.querySelectorAll('[data-lang]:not(button)');
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const lang = button.getAttribute('data-lang');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        contentEls.forEach(el => {
+          el.style.display = el.getAttribute('data-lang') === lang ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+
